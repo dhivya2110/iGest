@@ -12,6 +12,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class Main_Activity extends ActionBarActivity {
@@ -30,7 +32,9 @@ public class Main_Activity extends ActionBarActivity {
     public static final String TOAST = "toast";
     // Name of the connected device
     private String mConnectedDeviceName = null;
-
+    private Button main_task;
+    private Button add_new;
+    private Button assign_task;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +49,27 @@ public class Main_Activity extends ActionBarActivity {
             finish();
             return;
         }
+        main_task=(Button)findViewById(R.id.main_task);
+        main_task.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                start_gest_recog();
+            }
+        });
+        add_new=(Button)findViewById(R.id.new_gest_b);
+        add_new.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                add_new_gest();
+            }
+        });
+        assign_task=(Button)findViewById(R.id.assign_gest_b);
+        assign_task.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                assign_task_gest();
+            }
+        });
     }
 
     @Override
@@ -109,6 +134,31 @@ public class Main_Activity extends ActionBarActivity {
         mCommandService = new BluetoothCommandService(this, mHandler);
     }
 
+    private void start_gest_recog()
+    {
+        //When use IGest button is pressed, start new activity
+        Intent main_task_intent = new Intent(this,gest_recog.class);
+        main_task_intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        main_task_intent.putExtra("Connected Device",mConnectedDeviceName);
+        startActivity(main_task_intent);
+    }
+
+    private void add_new_gest()
+    {
+        //When add new gesture button is pressed, start this activity
+        Intent new_gest_intent = new Intent(this,new_gest.class);
+        new_gest_intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(new_gest_intent);
+    }
+
+    private void assign_task_gest()
+    {
+        //When the button is pressed to assign gesture to a task, this activity is called
+        Intent assign_gest_intent = new Intent(this,assign_gesture.class);
+        assign_gest_intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(assign_gest_intent);
+    }
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case REQUEST_CONNECT_DEVICE:
@@ -132,7 +182,6 @@ public class Main_Activity extends ActionBarActivity {
                 } else {
                     // User did not enable Bluetooth or an error occured
                     Toast.makeText(this, R.string.bt_not_enabled_leaving, Toast.LENGTH_SHORT).show();
-                    finish();
                 }
         }
     }
@@ -145,7 +194,7 @@ public class Main_Activity extends ActionBarActivity {
                 case MESSAGE_STATE_CHANGE:
                     switch (msg.arg1) {
                         case BluetoothCommandService.STATE_CONNECTED:
-                            setTitle(R.string.title_connected_to + mConnectedDeviceName);
+                            setTitle(R.string.title_connected);
                             break;
                         case BluetoothCommandService.STATE_CONNECTING:
                             setTitle(R.string.title_connecting);

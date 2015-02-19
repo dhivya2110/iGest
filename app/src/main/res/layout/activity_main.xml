@@ -15,4 +15,43 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:id="@+id/main_task"
+        android:background="@drawable/mybutton"
+        android:layout_below="@+id/header"
+        android:layout_marginTop="10dp"
+        android:text="@string/main_task"
+        android:textSize="50dp"
+        android:textColor="#FFFFFF"
+        android:textAlignment="gravity"
+        android:gravity="center"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:id="@+id/new_gest_b"
+        android:background="@drawable/mybutton"
+        android:text="@string/add_new"
+        android:layout_marginTop="10dp"
+        android:textColor="#ffffff"
+        android:textSize="30dp"
+        android:layout_below="@+id/main_task"
+        android:textAlignment="gravity"
+        android:gravity="center"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_below="@+id/new_gest_b"
+        android:id="@+id/assign_gest_b"
+        android:layout_marginTop="10dp"
+        android:text="@string/assign"
+        android:textAlignment="gravity"
+        android:gravity="center"
+        android:background="@drawable/mybutton"
+        android:textSize="30dp"
+        android:textColor="#ffffff"
+        />
 </RelativeLayout>

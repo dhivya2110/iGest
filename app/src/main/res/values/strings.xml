@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">iGEST</string>
+    <string name="app_name">IGest</string>
     <string name="hello_world">Hello world!</string>
     <string name="scan">Connect to a device</string>
     <string name="scanning">Scanning...</string>
-    <string name="title_connected_to">Connected to </string>
+    <string name="title_connected">Connected</string>
     <string name="title_connecting">Connecting...</string>
-    <string name="title_not_connected">Not Connected</string>
+    <string name="title_not_connected">Device not connected</string>
     <string name="bt_not_enabled_leaving">Bluetooth was not enabled. Leaving Remote Bluetooth</string>
     <string name="title_paired_devices">Paired Devices</string>
     <string name="title_other_devices">Other Devices</string>
@@ -15,4 +15,12 @@
     <string name="none_paired">No device is paired</string>
     <string name="select_device">Select a device</string>
     <string name="none_found">No devices found</string>
+    <string name="main_task">USE IGest</string>
+    <string name="add_new">ADD NEW GESTURE</string>
+    <string name="assign">ASSIGN TASK</string>
+    <string name="recog">CLICK HERE TO GET STARTED</string>
+    <string name="add_new_exp">Before adding a new gesture, please be ready wearing the IGest device.
+        Press the Start button below and perform the gesture.
+        Once you are done, please press Stop.
+        To store the gesture, press Save Gesture.</string>
 </resources>
